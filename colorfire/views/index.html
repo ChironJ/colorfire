@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block script %}
+<script>
+$(document).ready(function(){
+    $('#remindpoint').load('/random');
+    alert("random");
+})
+$(function () {
+  var timer = null;
+  var initfn = function() {
+    $.ajax({
+      url: "load",
+      cache:"false",
+      type: "get",
+      dataType: "json",
+      success: function(data, textStatus, XMLHttpRequest) {
+        if (textStatus == "success") {
+          if (data == null) {
+            alert("clear");
+            clearTimeout(timer);
+          }
+          for (var k=0; k<data["maxnum"]-data["usernum"]; k++) {
+            $(ul).append("<ul>xxx</ul>");
+          //  $(#userlist).append("<ul>xxx</ul>");
+          }
+          alert("Data:"+data+"\nstatus:"+textStatus);
+        } else {
+          alert("status:"+textStatus);
+        }
+      },
+      error: function() { alert("err"); }
+    });
+    timer = setTimeout(initfn, 1000);
+  }
+  alert("1");
+  window.onload = initfn;
+});
+</script>
+<script>
+$('#remindpoint').live('pageinit', function(event) {
+  $('#remindpoint').append("22");
+  alert('This page was just enhanced by jQuery Mobile!');
+});
+</script>
+{% endblock %}
+{% block content %}
+<div data-role="page" id="indexpage">
+  <div data-role="header" data-position="fixed" >
+    <a href="exit" data-role="button" data-ajax="false">退出</a>
+    <h1>房间号:{{roomkey}}</h1>
+  </div>
+
+  <div data-role="content">
+   <div data-role="navbar">
+      <ul id="userlist" data-inset="true">
+         {% for user in user_list %}
+           {% if user.name is defined %}
+             <li><a href="#" data-icon="info">{{user.name}}</a></li>
+           {% else %}
+             <li><a href="#" data-icon="minus">空</a></li>
+           {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div data-role="controlgroup" data-type="horizontal" id=usercards>
+      <a href="#" data-role="button">用户1</a>
+      <a href="#" data-role="button">用户2</a>
+    </div>
+  </div>
+
+  <div data-role="footer" data-position="fixed" >
+    <div class="ui-grid-b">
+      <div class="ui-block-a">
+        <ul data-role="listview" data-inset="true">
+          <li>提示点
+            <span class="ui-li-count" id="remindpoint">/8</span>
+          </li>
+        </ul>
+      </div><!--clock-->
+      <div class="ui-block-b">
+        <ul data-role="listview" data-inset="true">
+          <li>闪电点
+            <span class="ui-li-count" id="lightpoint">/3</span>
+          </li>
+        </ul>
+      </div><!--block-->
+      <div class="ui-block-c">
+        <ul data-role="listview" data-inset="true">
+          <li>当前玩家
+            <span class="ui-li-count" id="currentuser"></span>
+          </li>
+        </ul>
+      </div><!--block-->
+    </div><!--grid-->
+  </div><!--footer-->
+</div>
+{% endblock %}

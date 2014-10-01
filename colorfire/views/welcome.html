@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div data-role="page" id="welcomepage">
+  <div data-role="header" data-position="fixed" >
+    <h1>欢迎试玩花火</h1>
+  </div>
+
+  <div data-role="content">
+    <form method="get" action="createroom">
+      <input type="submit" value="创建房间">
+    </form>
+    <form method="get" action="enterroom">
+      <input type="submit" value="进入房间">
+    </form>
+    <a href="#registerpage" data-role="button" data-rel="dialog">用户注册</a>
+    <a href="#loginpage" data-role="button" data-rel="dialog">用户登陆</a>
+  </div>
+
+  <div data-role="footer" data-position="fixed" >
+    <h1>Copyright 2014 by 湛嘉科技</h1>
+  </div>
+</div>
+{% endblock %}

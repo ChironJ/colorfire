@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div data-role="dialog" id="enterroompage">
+  <div data-role="header" data-position="fixed" >
+    <h1>进入房间，请输入房间号</h1>
+  </div>
+
+  <div data-role="content">
+    <form method="post" action="enterroom">
+      <div data-role="fieldcontain">
+        <label for="roomkey">房间号</label>
+        <input type="text" name="roomkey" id="roomkey" placeholder="请输入房间号">
+        <p> </p>
+        <input type="submit" data-inline="true" value="确认进入">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
