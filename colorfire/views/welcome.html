@@ -1,19 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 <div data-role="page" id="welcomepage">
-  <div data-role="header" data-position="fixed" >
+  <div data-role="header" data-position="fixed">
     <h1>欢迎试玩花火</h1>
   </div>
 
   <div data-role="content">
-    <form method="get" action="createroom">
+    <form method="get" action="/colorfire/createroom">
       <input type="submit" value="创建房间">
     </form>
-    <form method="get" action="enterroom">
+    <form method="get" action="/colorfire/enterroom">
       <input type="submit" value="进入房间">
     </form>
-    <a href="#registerpage" data-role="button" data-rel="dialog">用户注册</a>
-    <a href="#loginpage" data-role="button" data-rel="dialog">用户登陆</a>
+    <form method="get" action="/colorfire/register">
+      <input type="submit" value="用户注册">
+    </form>
+    <form method="get" action="/colorfire/login">
+      <input type="submit" value="用户登录">
+    </form>
+    <!--<a href="#registerpage" data-role="button" data-rel="dialog">用户注册</a>-->
   </div>
 
   <div data-role="footer" data-position="fixed" >

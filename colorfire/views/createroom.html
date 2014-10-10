@@ -6,14 +6,14 @@
   </div>
 
   <div data-role="content">
-    <form method="post" action="createroom">
+    <form method="post" action="createroom" data-ajax="false">
       <div>
         <label for="roomkey">为你分配的房间号是</label>
         <input type="text" name="roomkey" id="roomkey" value={{roomkey}} readonly>
         <label for="number">人数</label>
         <input type="range" name="number" id="number" value="2" min="2" max="5">
       </div>
-      <input type="submit" data-inline="true" value="创建" >
+      <input id='create' type="submit" data-inline="true" value="创建">
     </form>
   </div>
 
